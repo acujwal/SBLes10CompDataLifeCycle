@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>lesson10</title>
@@ -7,13 +7,14 @@
 <body>
 
 <a href="/">Show All Courses</a><br/>
+
 Title :<span th:text="${course.title}"></span><br/>
 Instructor :<span th:text="${course.instructor}"></span><br/>
 Description :<p th:text="${course.description}"></p><br/>
 Credits :<span th:text="${course.credit}"></span><br/>
 
-<a th:href="@{/delete/{id}(id=${course.id})}">Delete this Course</a>
+<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/delete/{id}(id=${course.id})}">Delete this Course</a>
 
-
+<div><a href="/logout">Logout</a></div>
 </body>
 </html>
