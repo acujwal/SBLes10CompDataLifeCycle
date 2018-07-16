@@ -23,6 +23,11 @@ public class HomeController {
         model.addAttribute("courses", courseRepository.findAll());
         return "list";
     }
+    @RequestMapping("/login")
+    public String login() {
+
+        return "login";
+    }
 
     @GetMapping("/add")
     public String courseForm(Model model) {
